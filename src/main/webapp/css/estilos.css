@@ -181,13 +181,14 @@ a {
     color: var(--color-blanco);
 }
 .visita {
-    width: fit-content;
+    width: 7rem;
     margin: 10px auto;
     padding: 10px 20px;
     background-color: var(--color-plomo);
     border: double var(--color-rojo) 5px;
     border-radius: 50%;
     font-weight: bold;
+    text-align: center;
 }
 /* fin de caja */
 @media screen and (min-width: 650px){

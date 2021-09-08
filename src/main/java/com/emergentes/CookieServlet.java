@@ -37,15 +37,46 @@ public class CookieServlet extends HttpServlet {
             cooNuevo.setMaxAge(120); // durara 120 segundos
             cooNuevo.setComment("Control de nuevos vistantes");
             
-            // Añadir el cookieNuevo al response
+            // Cookie para conmtrolar el número de Visitas
+            Cookie cooNroVisitas = new Cookie("contador", "1"); // momento que se crea : visita 1
+            cooNroVisitas.setMaxAge(120); // también durará 120 segundos
+            cooNroVisitas.setComment("Control del número de visitas");
+            
+            // Añadir los cookieNuevo al response
             response.addCookie(cooNuevo);
+            response.addCookie(cooNroVisitas);
+            
             mensaje = "<div class=\"caja fondo-rojo\">\n" +
 "                <p>Bienvenido, gracias por realizar tu primera visita a nuestro sitio.</p>\n" +
 "            </div>";
             
         } else {
+            // Recorrer el cookie
+            int nroVisita = 0;
+            for(Cookie coc : cookies){
+                if(coc.getName().equals("contador")){
+                    try {
+                        nroVisita = Integer.parseInt(coc.getValue());
+                        // System.out.println("Vale --> "+nroVisita);
+                        nroVisita++; // Incrementmos la visita en + 1
+                        
+                        // Sobreescribimos la cookie 
+                        Cookie cooNroVisitas = new Cookie("contador", nroVisita+"");
+                        cooNroVisitas.setMaxAge(120); // también dura 120 segundos, pero se reinicia
+                        cooNroVisitas.setComment("Control del número de visitas");
+                        
+                        // Añadimos nuevamnente la cookie actualizada
+                        response.addCookie(cooNroVisitas);
+                        
+                    } catch(NumberFormatException e){
+                        System.out.println("Ocurrio un error en la conversión");
+                    }
+                    break;
+                }
+            }
             mensaje = "<div class=\"caja fondo-verde\">\n" +
 "                <p>Gracias por confiar de nuevo en nuestro sitio</p>\n" +
+"                <div class=\"visita\">visita nro. "+nroVisita+"</div>\n" +
 "            </div>";
         }
         
