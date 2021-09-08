@@ -6,6 +6,8 @@
 	--color-celeste: #a8d5f2;
 	--color-plomo: #edf1fa;
 	--color-rojo: #f24f50;
+    --color-blanco: #fff;
+    --color-verde: rgb(65, 192, 65);
 }
 
 * {
@@ -39,7 +41,8 @@ footer {
 }
 h1 { 
 	text-align: center;
-	color: var(--color-rojo); 
+	color: var(--color-rojo);
+    margin-bottom: 10px;
 }
 form {
 	width: 360px;
@@ -108,6 +111,7 @@ a {
     transition: .3s;
     box-shadow: 0 50px var(--color-azul-oscuro) inset;
     font-weight: bold;
+    text-decoration: none;
 }
 .boton:hover{
     box-shadow: 0 0 var(--color-azul) inset;
@@ -118,9 +122,19 @@ a {
 
 /* ******* fin contenedor campo ********** */
 
-/* colores de texto */
+/* inicio de colores de texto y fondos */
 .rojo {color: var(--color-rojo);}
 .azul-oscuro{color: var(--color-azul-oscuro); }
+.verde { color: var(--color-verde);}
+.azul { color: var(--color-azul); }
+.blanco { color: var(--color-blanco); }
+
+.fondo-rojo { background-color: var(--color-rojo); }
+.fondo-azul-oscuro { background-color: var(--color-azul-oscuro); }
+.fondo-verde { background-color: var(--color-verde); }
+.fondo-azul { background-color: var(--color-azul); }
+.fondo-blanco { background-color: var(--color-blanco);}
+/* fin de colores de texto y fondos */
 
 .lista-serv {
     margin-top: 20px;
@@ -152,12 +166,57 @@ a {
     text-align: center;
 }
 
+/* inicio de caja */
+.caja {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 2vw;
+    border: solid black 1px;
+    border-radius: 0 5px;
+}
+.caja > p {
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-blanco);
+}
+.visita {
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: var(--color-plomo);
+    border: double var(--color-rojo) 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+/* fin de caja */
 @media screen and (min-width: 650px){
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
     .lista-serv {
         grid-template-columns: 45% 45%;
     }
 }
 @media screen and (min-width: 1024px){
+    html {
+        font-size: 1.2rem;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
     .lista-serv {
         grid-template-columns: 31% 31% 31%;
     }
