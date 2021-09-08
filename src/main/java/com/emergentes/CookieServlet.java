@@ -57,16 +57,13 @@ public class CookieServlet extends HttpServlet {
                 if(coc.getName().equals("contador")){
                     try {
                         nroVisita = Integer.parseInt(coc.getValue());
-                        // System.out.println("Vale --> "+nroVisita);
+                        //System.out.println("Vale --> "+nroVisita);
                         nroVisita++; // Incrementmos la visita en + 1
                         
-                        // Sobreescribimos la cookie 
-                        Cookie cooNroVisitas = new Cookie("contador", nroVisita+"");
-                        cooNroVisitas.setMaxAge(120); // también dura 120 segundos, pero se reinicia
-                        cooNroVisitas.setComment("Control del número de visitas");
+                        coc.setValue(nroVisita+"");
                         
-                        // Añadimos nuevamnente la cookie actualizada
-                        response.addCookie(cooNroVisitas);
+                        // Actualizamos la cookie 
+                        response.addCookie(coc);
                         
                     } catch(NumberFormatException e){
                         System.out.println("Ocurrio un error en la conversión");
@@ -75,7 +72,7 @@ public class CookieServlet extends HttpServlet {
                 }
             }
             mensaje = "<div class=\"caja fondo-verde\">\n" +
-"                <p>Gracias por confiar de nuevo en nuestro sitio</p>\n" +
+"                <p>Gracias por confiar de nuevo en nuestro sitio. Quedan</p>\n" +
 "                <div class=\"visita\">visita nro. "+nroVisita+"</div>\n" +
 "            </div>";
         }
